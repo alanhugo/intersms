@@ -193,7 +193,7 @@
                 Universidad de Chiclayo.
             </div>
             <div>
-                <strong>Copyright</strong> Altagora &copy; 2015
+                <strong>Copyright</strong> InterSMS &copy; 2015
             </div>
         </div>
 
@@ -201,13 +201,8 @@
         </div>
     
     <!-- Scripts de Mantenimientos -->
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/accion.js" type="text/javascript"></script>
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/area.js" type="text/javascript"></script>
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/tipo_documento.js" type="text/javascript"></script>
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/persona.js" type="text/javascript"></script>
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/tramite.js" type="text/javascript"></script>
+    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/groupcmd.js" type="text/javascript"></script>
     <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/usuario.js" type="text/javascript"></script>
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/configuration.js" type="text/javascript"></script>
     <script>var env_webroot_script = '<?php echo ENV_WEBROOT_FULL_URL; ?>';</script>
 
     <!-- Page-Level Scripts -->
