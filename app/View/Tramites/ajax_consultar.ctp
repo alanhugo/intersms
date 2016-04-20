@@ -1,0 +1,1 @@
+<?php echo $this->Element('Tramite/seguimiento',$arr_obj_seg_tramite); ?>
