@@ -55,7 +55,7 @@ class AppController extends Controller {
     function beforeFilter(){
     	$this->loadModel('Usuario');
         if($this->Auth->user()){
-        	$this->obj_logged_user =  $this->Usuario->findById($this->Session->read('Auth.User.id'));
+        	$this->obj_logged_user =  $this->Usuario->findBy('id',$this->Session->read('Auth.User.id'));
         	$this->set('obj_logged_user',$this->obj_logged_user);
         }
 	}

@@ -1,11 +1,18 @@
 <?php
 App::uses('AppModel','Model');
-  class Groupcmd extends AppModel {
+class Groupcmd extends AppModel {
 
+    function beforeFilter() {
+        parent::beforeFilter();
+    }
+    
+    public $useTable = 'groupcmd';
+    public $primaryKey = 'IDGroup';
+    
     public $belongsTo = array(
     		'Usuario' => array(
     				'className' => 'Usuario',
-    				'foreignKey' => 'usuario_id',
+    				'foreignKey' => 'IDUser',
     				'conditions' => '',
     				'fields' => '',
     				'order' => ''
@@ -20,6 +27,5 @@ App::uses('AppModel','Model');
     				)
     		)
     );
-    
-  }
+}
 ?>

@@ -15,7 +15,7 @@ class GroupcmdsController extends AppController{
 	 */
 	public function index() {
 		$arr_groupcmds = $this->Groupcmd->findObjects('all',array(
-				'conditions'=>array('Groupcmd.status !=' => 0),
+				'conditions'=>array('Groupcmd.Status !=' => 0),
 				'order'=> array('Groupcmd.created desc')));
 		
 		$this->set(compact('arr_groupcmds'));
@@ -29,7 +29,7 @@ class GroupcmdsController extends AppController{
 	public function ajax_listar() {
 		$this->layout = 'ajax';
 		$arr_groupcmds = $this->Groupcmd->findObjects('all',array(
-				'conditions'=>array('Groupcmd.status !=' => 0),
+				'conditions'=>array('Groupcmd.Status !=' => 0),
 				'order'=> array('Groupcmd.created desc')));
 	
 		$this->set(compact('arr_groupcmds'));
@@ -45,10 +45,9 @@ class GroupcmdsController extends AppController{
 	
 		if($this->request->is('post')  || $this->request->is('put')){
 			if(isset($groupcmd_id) && intval($groupcmd_id) > 0){
-	
-				//update
-				$this->Groupcmd->id = $groupcmd_id;
 
+				//update
+				$this->request->data['Groupcmd']['IDGroup'] = $groupcmd_id;
 				if ($this->Groupcmd->save($this->request->data['Groupcmd'])) {
 					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'groupcmd_id'=>$groupcmd_id));
 					exit();
@@ -58,9 +57,10 @@ class GroupcmdsController extends AppController{
 				}
 			}else{
 	
-				//insert			
+				//insert
+				$this->request->data['Groupcmd']['IDUser'] = $this->obj_logged_user->getID();		
 				if ($this->Groupcmd->save($this->request->data['Groupcmd'])) {
-					$groupcmd_id = $this->Groupcmd->id;
+					$groupcmd_id = $this->Groupcmd->IDGroup;
 					echo json_encode(array('success'=>true,'msg'=>__('El grupo fue agregado con &eacute;xito.'),'groupcmd_id'=>$groupcmd_id));
 					exit();
 				}else{
@@ -70,8 +70,7 @@ class GroupcmdsController extends AppController{
 			}
 		}else{
 			if(isset($groupcmd_id)){
-				$obj_groupcmd = $this->Groupcmd->findById($groupcmd_id);
-	
+				$obj_groupcmd = $this->Groupcmd->findBy('IDGroup', $groupcmd_id);
 				$this->request->data = $obj_groupcmd->data;
 				$this->set(compact('groupcmd_id','obj_groupcmd'));
 			}
@@ -89,8 +88,8 @@ class GroupcmdsController extends AppController{
 		if($this->request->is('post')){
 			$groupcmd_id = $this->request->data['groupcmd_id'];
 	
-			$obj_groupcmd = $this->Groupcmd->findById($groupcmd_id);
-			if($obj_groupcmd->saveField('status', 0)){
+			$obj_groupcmd = $this->Groupcmd->findBy('IDGroup', $groupcmd_id);
+			if($obj_groupcmd->saveField('Status', 0)){
 				echo json_encode(array('success'=>true,'msg'=>__('Eliminado con &eacute;xito.')));
 				exit();
 			}else{

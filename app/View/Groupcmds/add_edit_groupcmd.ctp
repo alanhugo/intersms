@@ -23,7 +23,7 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Nombre</label>
 								<div class="col-sm-4">
-									<input type="text" name="data[Groupcmd][name]" id="GroupName" class="form-control" value="<?php echo (isset($obj_groupcmd))?$obj_groupcmd->getAttr('name'):''?>">
+									<input type="text" name="data[Groupcmd][DGroup]" id="GroupName" class="form-control" value="<?php echo (isset($obj_groupcmd))?$obj_groupcmd->getAttr('DGroup'):''?>">
 								</div>
 								
 							</div>
