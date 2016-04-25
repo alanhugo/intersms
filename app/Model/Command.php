@@ -7,7 +7,7 @@ class Command extends AppModel {
     }
     
     public $useTable = 'commands';
-    public $primaryKey = 'IDComand';
+    public $primaryKey = 'IDCommand';
     
     public $belongsTo = array(
     		'Usuario' => array(

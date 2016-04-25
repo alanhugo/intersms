@@ -11,7 +11,7 @@ $(document).ready(function(){
 			
 			$('div#command #add_edit_command_container').unbind();
 			$('div#command #add_edit_command_container').load(env_webroot_script + 'commands/add_edit_command/'+command_id,function(){
-
+				$('.chosen-select').chosen();
 			});
 		},
 		
@@ -93,5 +93,4 @@ $(document).ready(function(){
 		command_id = $('div#myModalDeleteCommand').attr('command_id');
 		command.deleteCommand(command_id);
 	});
-	
 });

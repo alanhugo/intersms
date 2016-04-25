@@ -100,13 +100,13 @@ Configure::write('Dispatcher.filters', array(
 
 switch (Configure::read('environment')){
 	case 'localhost':
-		Configure::write('mym.url','http://localhost/intersms/');
+		Configure::write('mym.url','http://localhost/~hugo/intersms/');
 		break;
 	case 'production':
 		Configure::write('mym.url','http://webintersms.com/');
 		break;
 	default:
-		Configure::write('mym.url','http://localhost/intersms/');
+		Configure::write('mym.url','http://localhost/~hugo/intersms/');
 }
 
 Configure::write('ENV_WEBROOT_FULL_URL',Configure::read('mym.url'));

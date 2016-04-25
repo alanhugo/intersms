@@ -9,7 +9,7 @@ class CommandsController extends AppController{
 	}
 	
 	/**
-	 * Lista de grupos cmd
+	 * Lista de comandos
 	 * @author Alan Hugo
 	 * @version 23 Abril 2015
 	 */
@@ -22,7 +22,7 @@ class CommandsController extends AppController{
 	}
 
 	/**
-	 * Ajax Lista grupos
+	 * Ajax Lista comandos
 	 * @author Alan Hugo
 	 * @version 23 Abril 2015
 	 */
@@ -36,7 +36,7 @@ class CommandsController extends AppController{
 	}
 
 	/**
-	 * Agrega y edita grupos
+	 * Agrega y edita comandos
 	 * @author Alan Hugo
 	 * @version 23 Abril 2015
 	 */
@@ -47,8 +47,9 @@ class CommandsController extends AppController{
 			if(isset($command_id) && intval($command_id) > 0){
 
 				//update
-				$this->request->data['Command']['IDCommand'] = $command_id;
-				if ($this->Command->save($this->request->data['Command'])) {
+				$this->request->data['Command']['IDCommand'] = 1;
+				debug($this->request->data);exit();
+				if ($this->Command->save($this->request->data)) {
 					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'command_id'=>$command_id));
 					exit();
 				}else{
@@ -59,9 +60,9 @@ class CommandsController extends AppController{
 	
 				//insert
 				$this->request->data['Command']['IDUser'] = $this->obj_logged_user->getID();		
-				if ($this->Command->save($this->request->data['Command'])) {
+				if ($this->Command->save($this->request->data)) {
 					$command_id = $this->Command->IDCommand;
-					echo json_encode(array('success'=>true,'msg'=>__('El grupo fue agregado con &eacute;xito.'),'command_id'=>$command_id));
+					echo json_encode(array('success'=>true,'msg'=>__('El comando fue agregado con &eacute;xito.'),'command_id'=>$command_id));
 					exit();
 				}else{
 					echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Command->validationErrors));
@@ -82,7 +83,7 @@ class CommandsController extends AppController{
 	 * @author Alan Hugo
 	 * @version 23 Abril 2015
 	 */
-	public function delete_commandcmd(){
+	public function delete_command(){
 		$this->layout = 'ajax';
 	
 		if($this->request->is('post')){

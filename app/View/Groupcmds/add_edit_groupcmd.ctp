@@ -21,7 +21,7 @@
 					<div class="ibox-content">
 						<?php echo $this->Form->create('Groupcmd',array('action'=>'add_edit_groupcmd','method'=>'post', 'id'=>'add_edit_groupcmd', 'type' => 'file', 'class'=>'form-horizontal'));?>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Nombre</label>
+								<label class="col-sm-2 control-label">Nombre:</label>
 								<div class="col-sm-4">
 									<input type="text" name="data[Groupcmd][DGroup]" id="GroupName" class="form-control" value="<?php echo (isset($obj_groupcmd))?$obj_groupcmd->getAttr('DGroup'):''?>">
 								</div>

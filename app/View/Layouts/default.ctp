@@ -201,8 +201,7 @@
         </div>
     
     <!-- Scripts de Mantenimientos -->
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/groupcmd.js" type="text/javascript"></script>
-    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/usuario.js" type="text/javascript"></script>
+    <script src="<?= ENV_WEBROOT_FULL_URL;?>js/ajax/<?php echo $this->request->controller;?>.js" type="text/javascript"></script>
     <script>var env_webroot_script = '<?php echo ENV_WEBROOT_FULL_URL; ?>';</script>
 
     <!-- Page-Level Scripts -->

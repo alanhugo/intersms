@@ -11,9 +11,9 @@
 	<?php $cont=1?>
 		<?php foreach ($arr_commands as $key => $command){?>
 		<tr class="command_row_container"
-				command_id="<?php echo $command->getID(); ?>" command_name="<?php echo $command->getAttr('DGroup')?>">
+				command_id="<?php echo $command->getID(); ?>" command_name="<?php echo $command->getAttr('Command')?>">
 			<td><?php echo $cont++?></td>
-			<td><?php echo $command->getAttr('DGroup')?></td>
+			<td><?php echo $command->getAttr('Command')?></td>
 			<td><?php echo ($command->getAttr('Status')==1)?"Habilitado":"Deshabilitado"?></td>
 			<td><a><i class="fa fa-edit text-navy edit-command-trigger"></i></a>&nbsp;&nbsp;
 				<a href="#myModalDeleteCommand" role="button" data-toggle="modal"

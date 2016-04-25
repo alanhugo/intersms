@@ -21,12 +21,12 @@
 					<div class="ibox-content">
 						<?php echo $this->Form->create('Usuario',array('action'=>'add_edit_usuario','method'=>'post', 'id'=>'add_edit_usuario', 'type' => 'file', 'class'=>'form-horizontal'));?>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Apellidos y Nombres</label>
+								<label class="col-sm-2 control-label">Apellidos y Nombres:</label>
 								<div class="col-sm-4">
 									<input type="text" name="data[Usuario][nombre]" id="UsuarioName" class="form-control" value="<?php echo (isset($obj_usuario))?$obj_usuario->getAttr('nombre'):''?>">
 								</div>
 								
-								<label class="col-sm-2 control-label">Sexo</label>
+								<label class="col-sm-2 control-label">Sexo:</label>
 								<div class="col-sm-4">
 									<select class="form-control m-b" name="data[Usuario][sexo]"
 										id="cboSexo">
@@ -53,13 +53,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Nombre de Usuario</label>
+								<label class="col-sm-2 control-label">Nombre de Usuario:</label>
 								<div class="col-sm-4">
 									<input type="hidden" id="UsuarioUserID" class="form-control" value="<?php echo (isset($obj_usuario))?$obj_usuario->getID():''?>">
 									<input type="text" name="data[Usuario][username]" id="UsuarioUserName" class="form-control" value="<?php echo (isset($obj_usuario))?$obj_usuario->getAttr('username'):''?>">
 								</div>
 
-								<label class="col-sm-2 control-label">Contrase&ntilde;a</label>
+								<label class="col-sm-2 control-label">Contrase&ntilde;a:</label>
 								<div class="col-sm-4">
 									<input type="password" name="data[Usuario][password]" id="UsuarioPassword" <?php echo (isset($obj_usuario))?'disabled="disabled"':''?> class="form-control">
 									<?php if(isset($obj_usuario)){?><a href="#myModalChangePass" class='link_cambiar_clave' data-toggle="modal">Cambiar Contrase&ntilde;a</a><?php }?>
@@ -67,7 +67,7 @@
 								
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="Usuariofoto">Foto</label>
+								<label class="col-sm-2 control-label" for="Usuariofoto">Foto:</label>
 								<div class="col-sm-4">
 									<div class='fileupload fileupload-new' data-provides='fileupload'>
 										<div class='uneditable-input span2'><i class='icon-file fileupload-exists'></i>

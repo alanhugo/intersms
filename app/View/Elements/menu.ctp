@@ -29,6 +29,9 @@
 	<li class="<?php echo ($controller == 'groupcmds')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>groupcmds"><i class="fa fa-files-o"></i> <span
 			class="nav-label">Comandos Grupos</span>
 	</a></li>
+	<li class="<?php echo ($controller == 'commands')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>commands"><i class="fa fa-cogs"></i> <span
+			class="nav-label">Comandos</span>
+	</a></li>
 	<li class="<?php echo ($controller == 'usuarios')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>usuarios"><i class="fa fa-user"></i> <span
 			class="nav-label">Usuarios</span>
 	</a></li>

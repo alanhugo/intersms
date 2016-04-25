@@ -48,7 +48,7 @@ class GroupcmdsController extends AppController{
 
 				//update
 				$this->request->data['Groupcmd']['IDGroup'] = $groupcmd_id;
-				if ($this->Groupcmd->save($this->request->data['Groupcmd'])) {
+				if ($this->Groupcmd->save($this->request->data)) {
 					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'groupcmd_id'=>$groupcmd_id));
 					exit();
 				}else{
@@ -59,7 +59,7 @@ class GroupcmdsController extends AppController{
 	
 				//insert
 				$this->request->data['Groupcmd']['IDUser'] = $this->obj_logged_user->getID();		
-				if ($this->Groupcmd->save($this->request->data['Groupcmd'])) {
+				if ($this->Groupcmd->save($this->request->data)) {
 					$groupcmd_id = $this->Groupcmd->IDGroup;
 					echo json_encode(array('success'=>true,'msg'=>__('El grupo fue agregado con &eacute;xito.'),'groupcmd_id'=>$groupcmd_id));
 					exit();
