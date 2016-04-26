@@ -47,11 +47,20 @@ class CommandsController extends AppController{
 			if(isset($command_id) && intval($command_id) > 0){
 
 				//update
-				$this->request->data['Command']['IDCommand'] = 1;
+				$this->request->data['Command']['IDCommand'] = $command_id;
 				if ($this->Command->save($this->request->data)) {
 					$this->loadModel('Commandgroup');
 					$this->Commandgroup->deleteAll($command_id);
-					//debug($this->request->data);exit();
+
+					$arr_commandsgroup = array();
+					if(isset($this->request->data['Groupcmd']['IDGroup'])){
+						foreach ($this->request->data['Groupcmd']['IDGroup'] as $key => $value) {
+							$arr = array("IDCommand" => $command_id, "IDGroup" => $value, "IDUser" => $this->obj_logged_user->getID());
+							$arr_commandsgroup[$key] = $arr;
+						}
+					}
+					//debug($arr_commandsgroup);exit();
+					$this->Commandgroup->saveAll($arr_commandsgroup);
 					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'command_id'=>$command_id));
 					exit();
 				}else{
@@ -73,9 +82,25 @@ class CommandsController extends AppController{
 			}
 		}else{
 			if(isset($command_id)){
+				$this->loadModel('Commandgroup');
+				$this->loadModel('Groupcmd');
+
+				$arr_obj_commandgroup = $this->Commandgroup->find('all',
+					array('conditions'=>array('Commandgroup.IDCommand' => $command_id)));
+
+				$arr_commandgroup_idgroup = array();
+				foreach ($arr_obj_commandgroup as $key => $obj_commandgroup) {
+					$arr_commandgroup_idgroup[] = $obj_commandgroup['Commandgroup']['IDGroup'];
+				}
+
+				$arr_obj_groupcmds = $this->Groupcmd->findObjects('all',array(
+					'conditions'=>array('Groupcmd.Status !=' => 0),
+					'order'=> array('Groupcmd.DGroup desc')));
+
+				//debug($arr_commandgroup_idgroup);
 				$obj_command = $this->Command->findBy('IDCommand', $command_id);
 				$this->request->data = $obj_command->data;
-				$this->set(compact('command_id','obj_command'));
+				$this->set(compact('command_id','obj_command','arr_obj_groupcmds','arr_commandgroup_idgroup'));
 			}
 		}
 	}

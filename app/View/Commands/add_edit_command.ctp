@@ -54,15 +54,9 @@
 				            	<label class="col-sm-2 control-label">Grupo:</label>
 					            <div class="col-sm-9">
 						            <select name="data[Groupcmd][IDGroup][]" data-placeholder="Seleccionar un grupo" class="chosen-select" multiple style="width:100%;" tabindex="4">
-										<option value="1">Grupo 01</option>
-										<option value="2">Grupo 11</option>
-										<option value="3">Grupo 10</option>
-										<option value="4">Grupo 09</option>
-										<option value="5">Grupo 08</option>
-										<option value="6">Grupo 07</option>
-										<option value="7">Grupo 06</option>
-										<option value="8">Grupo 05</option>
-										<option value="9">Grupo 04</option>
+						            	<?php foreach ($arr_obj_groupcmds as $key => $obj_groupcmds) {?>
+										<option <?php echo (in_array($obj_groupcmds->getAttr('IDGroup'),$arr_commandgroup_idgroup))?"selected":""?> value="<?php echo $obj_groupcmds->getAttr('IDGroup');?>"><?php echo $obj_groupcmds->getAttr('DGroup');?></option>
+										<?php } ?>
 						            </select>
 								</div>
 				            </div>
