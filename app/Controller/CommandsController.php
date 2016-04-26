@@ -48,8 +48,10 @@ class CommandsController extends AppController{
 
 				//update
 				$this->request->data['Command']['IDCommand'] = 1;
-				debug($this->request->data);exit();
 				if ($this->Command->save($this->request->data)) {
+					$this->loadModel('Commandgroup');
+					$this->Commandgroup->deleteAll($command_id);
+					//debug($this->request->data);exit();
 					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'command_id'=>$command_id));
 					exit();
 				}else{

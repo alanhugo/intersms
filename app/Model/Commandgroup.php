@@ -7,7 +7,7 @@ class Commandgroup extends AppModel {
     }
     
     public $useTable = 'commandgroup';
-    public $primaryKey = 'IDComandgroup';
+    public $primaryKey = 'IDCommandgroup';
     
     public $belongsTo = array(
     		'Usuario' => array(
