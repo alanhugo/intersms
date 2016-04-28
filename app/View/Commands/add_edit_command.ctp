@@ -35,9 +35,14 @@
 								<div class="col-sm-4">
 									<input type="text" name="data[Command][FlagCMD]" id="FlagCMD" class="form-control" value="<?php echo (isset($obj_command))?$obj_command->getAttr('FlagCMD'):''?>">
 								</div>
-								<label class="col-sm-1 control-label">HasTag:</label>
+								<label class="col-sm-1 control-label">Terminador:</label>
 								<div class="col-sm-4">
-									<input type="text" name="data[Command][Terminator]" id="Terminator" class="form-control" value="<?php echo (isset($obj_command))?$obj_command->getAttr('Terminator'):''?>">
+									<select name="data[Command][Terminator]" data-placeholder="Seleccionar un terminador" class="chosen-select" style="width:100%;" tabindex="4">
+										<option value="#registrar">#Registrar</option>
+										<option value="salto_linea">Salto de Linea</option>
+										<option value="emergencia">Emergencia</option>
+										<option value="urgencia">Urgencia</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">

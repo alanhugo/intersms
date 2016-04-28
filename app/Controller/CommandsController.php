@@ -97,10 +97,17 @@ class CommandsController extends AppController{
 					'conditions'=>array('Groupcmd.Status !=' => 0),
 					'order'=> array('Groupcmd.DGroup desc')));
 
-				//debug($arr_commandgroup_idgroup);
 				$obj_command = $this->Command->findBy('IDCommand', $command_id);
 				$this->request->data = $obj_command->data;
 				$this->set(compact('command_id','obj_command','arr_obj_groupcmds','arr_commandgroup_idgroup'));
+			}else{
+				
+				$this->loadModel('Groupcmd');
+				$arr_commandgroup_idgroup = array();
+				$arr_obj_groupcmds = $this->Groupcmd->findObjects('all',array(
+					'conditions'=>array('Groupcmd.Status !=' => 0),
+					'order'=> array('Groupcmd.DGroup desc')));
+				$this->set(compact('arr_obj_groupcmds','arr_commandgroup_idgroup'));
 			}
 		}
 	}
