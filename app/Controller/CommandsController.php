@@ -16,7 +16,7 @@ class CommandsController extends AppController{
 	public function index() {
 		$arr_commands = $this->Command->findObjects('all',array(
 				'conditions'=>array('Command.Status !=' => 0),
-				'order'=> array('Command.created desc')));
+				'order'=> array('Command.created asc')));
 		
 		$this->set(compact('arr_commands'));
 	}
@@ -30,7 +30,7 @@ class CommandsController extends AppController{
 		$this->layout = 'ajax';
 		$arr_commands = $this->Command->findObjects('all',array(
 				'conditions'=>array('Command.Status !=' => 0),
-				'order'=> array('Command.created desc')));
+				'order'=> array('Command.created asc')));
 	
 		$this->set(compact('arr_commands'));
 	}
