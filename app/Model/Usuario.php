@@ -36,7 +36,13 @@ App::uses('AppModel','Model');
     						'message' => 'El password debe tener entre 6 y 60 caracteres.',
     						'on' => 'create'
     				),
-    		)
+    		),
+            'nombre'    => array(
+                    'notempty' => array(
+                            'rule' => array('notEmpty'),
+                            'message' => 'El Nombre es requerido'
+                    )
+            ),
     );
 	
 	public function checkPasswordForUser($user_id, $current_pass = null){

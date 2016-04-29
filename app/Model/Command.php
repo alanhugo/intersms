@@ -25,7 +25,23 @@ class Command extends AppModel {
     						'rule' => array('notEmpty'),
     						'message' => 'El Nombre es requerido'
     				)
-    		)
+    		),
+            'FlagCMD'    => array(
+                    'notempty' => array(
+                            'rule' => array('notEmpty'),
+                            'message' => 'FlagCMD es requerido'
+                    ),
+                    'isUnique' => array(
+                        'rule' => 'isUnique',
+                        'message' => 'El FlagCMD ya esta siendo utilizado'
+                    )
+            ),
+            'PhoneID'    => array(
+                    'notempty' => array(
+                            'rule' => array('notEmpty'),
+                            'message' => 'FlagCMD es requerido'
+                    )
+            ),
     );
 }
 ?>

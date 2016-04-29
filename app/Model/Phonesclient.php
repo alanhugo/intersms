@@ -1,13 +1,13 @@
 <?php
 App::uses('AppModel','Model');
-class Groupcmd extends AppModel {
+class Phonesclient extends AppModel {
 
     function beforeFilter() {
         parent::beforeFilter();
     }
     
-    public $useTable = 'groupcmd';
-    public $primaryKey = 'IDGroup';
+    public $useTable = 'phonesclients';
+    public $primaryKey = 'IDPhoneclient';
     
     public $belongsTo = array(
     		'Usuario' => array(
@@ -20,12 +20,18 @@ class Groupcmd extends AppModel {
     );
     
     public $validate = array(
-    		'DGroup'    => array(
+    		'PhoneNumber'    => array(
     				'notempty' => array(
     						'rule' => array('notEmpty'),
-    						'message' => 'El Nombre es requerido'
+    						'message' => 'El PhoneNumber es requerido'
     				)
-    		)
+    		),
+            'UserPhone'    => array(
+                    'notempty' => array(
+                            'rule' => array('notEmpty'),
+                            'message' => 'El UserPhone es requerido'
+                    )
+            )
     );
 }
 ?>
