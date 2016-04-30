@@ -1,7 +1,7 @@
 <?php
-class GroupcmdsController extends AppController{
+class PhonesclientsController extends AppController{
     
-    public $name = 'Groupcmds';
+    public $name = 'Phonesclients';
 
     public function beforeFilter(){
 		$this->layout = "default";
@@ -14,11 +14,11 @@ class GroupcmdsController extends AppController{
 	 * @version 20 Abril 2015
 	 */
 	public function index() {
-		$arr_groupcmds = $this->Groupcmd->findObjects('all',array(
-				'conditions'=>array('Groupcmd.Status !=' => 0),
-				'order'=> array('Groupcmd.created desc')));
+		$arr_phonesclients = $this->Phonesclient->findObjects('all',array(
+				'conditions'=>array('Phonesclient.Status !=' => 0),
+				'order'=> array('Phonesclient.created desc')));
 		
-		$this->set(compact('arr_groupcmds'));
+		$this->set(compact('arr_phonesclients'));
 	}
 
 	/**
@@ -28,11 +28,11 @@ class GroupcmdsController extends AppController{
 	 */
 	public function ajax_listar() {
 		$this->layout = 'ajax';
-		$arr_groupcmds = $this->Groupcmd->findObjects('all',array(
-				'conditions'=>array('Groupcmd.Status !=' => 0),
-				'order'=> array('Groupcmd.created desc')));
+		$arr_phonesclients = $this->Phonesclient->findObjects('all',array(
+				'conditions'=>array('Phonesclient.Status !=' => 0),
+				'order'=> array('Phonesclient.created desc')));
 	
-		$this->set(compact('arr_groupcmds'));
+		$this->set(compact('arr_phonesclients'));
 	}
 
 	/**
@@ -40,39 +40,39 @@ class GroupcmdsController extends AppController{
 	 * @author Alan Hugo
 	 * @version 05 Julio 2015
 	 */
-	public function add_edit_groupcmd($groupcmd_id=null){
+	public function add_edit_arr_phonesclient($phonesclient_id=null){
 		$this->layout = 'ajax';
 	
 		if($this->request->is('post')  || $this->request->is('put')){
-			if(isset($groupcmd_id) && intval($groupcmd_id) > 0){
+			if(isset($phonesclient_id) && intval($phonesclient_id) > 0){
 
 				//update
-				$this->request->data['Groupcmd']['IDGroup'] = $groupcmd_id;
-				if ($this->Groupcmd->save($this->request->data)) {
-					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'groupcmd_id'=>$groupcmd_id));
+				$this->request->data['Phonesclient']['IDPhoneclient'] = $phonesclient_id;
+				if ($this->Phonesclient->save($this->request->data)) {
+					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'phonesclient_id'=>$phonesclient_id));
 					exit();
 				}else{
-					echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Groupcmd->validationErrors));
+					echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Phonesclient->validationErrors));
 					exit();
 				}
 			}else{
 	
 				//insert
-				$this->request->data['Groupcmd']['IDUser'] = $this->obj_logged_user->getID();		
-				if ($this->Groupcmd->save($this->request->data)) {
-					$groupcmd_id = $this->Groupcmd->IDGroup;
-					echo json_encode(array('success'=>true,'msg'=>__('El grupo fue agregado con &eacute;xito.'),'groupcmd_id'=>$groupcmd_id));
+				$this->request->data['Phonesclient']['IDUser'] = $this->obj_logged_user->getID();		
+				if ($this->Phonesclient->save($this->request->data)) {
+					$phonesclient_id = $this->Phonesclient->IDPhoneclient;
+					echo json_encode(array('success'=>true,'msg'=>__('El grupo fue agregado con &eacute;xito.'),'phonesclient_id'=>$phonesclient_id));
 					exit();
 				}else{
-					echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Groupcmd->validationErrors));
+					echo json_encode(array('success'=>false,'msg'=>__('Su informaci&oacute;n es incorrecta'),'validation'=>$this->Phonesclient->validationErrors));
 					exit();
 				}
 			}
 		}else{
-			if(isset($groupcmd_id)){
-				$obj_groupcmd = $this->Groupcmd->findBy('IDGroup', $groupcmd_id);
-				$this->request->data = $obj_groupcmd->data;
-				$this->set(compact('groupcmd_id','obj_groupcmd'));
+			if(isset($phonesclient_id)){
+				$obj_phonesclient = $this->Phonesclient->findBy('IDPhoneclient', $phonesclient_id);
+				$this->request->data = $obj_phonesclient->data;
+				$this->set(compact('phonesclient_id','obj_phonesclient'));
 			}
 		}
 	}
@@ -82,14 +82,14 @@ class GroupcmdsController extends AppController{
 	 * @author Alan Hugo
 	 * @version 07 Julio 2015
 	 */
-	public function delete_groupcmd(){
+	public function delete_phonesclient(){
 		$this->layout = 'ajax';
 	
 		if($this->request->is('post')){
-			$groupcmd_id = $this->request->data['groupcmd_id'];
+			$phonesclient_id = $this->request->data['phonesclient_id'];
 	
-			$obj_groupcmd = $this->Groupcmd->findBy('IDGroup', $groupcmd_id);
-			if($obj_groupcmd->saveField('Status', 0)){
+			$obj_phonesclient = $this->Phonesclient->findBy('IDPhoneclient', $phonesclient_id);
+			if($obj_phonesclient->saveField('Status', 0)){
 				echo json_encode(array('success'=>true,'msg'=>__('Eliminado con &eacute;xito.')));
 				exit();
 			}else{
