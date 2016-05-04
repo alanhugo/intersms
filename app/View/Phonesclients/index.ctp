@@ -9,7 +9,7 @@
 			</li>
 		</ol>
 	</div>
-	<div class="col-lg-2" style="padding-top:30px"><button class="btn btn-primary btn-nuevo-phonesclient"><i class="icon-plus"></i> Agregar Numero de Clientes</button></div>
+	<div class="col-lg-2" style="padding-top:30px"><button class="btn btn-primary btn-nuevo-phonesclient"><i class="icon-plus"></i> Agregar Num. de Clientes</button></div>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">

@@ -40,7 +40,7 @@ class PhonesclientsController extends AppController{
 	 * @author Alan Hugo
 	 * @version 05 Julio 2015
 	 */
-	public function add_edit_arr_phonesclient($phonesclient_id=null){
+	public function add_edit_phonesclient($phonesclient_id=null){
 		$this->layout = 'ajax';
 	
 		if($this->request->is('post')  || $this->request->is('put')){
@@ -70,10 +70,32 @@ class PhonesclientsController extends AppController{
 			}
 		}else{
 			if(isset($phonesclient_id)){
+				$this->loadModel('Phonesgroup');
+				$this->loadModel('Groupcmd');
+				
+				$arr_obj_phonesgroup = $this->Phonesgroup->find('all',
+					array('conditions'=>array('Phonesgroup.IDPhoneclient' => $phonesclient_id)));
+
+				$arr_phonesgroup_idgroup = array();
+				foreach ($arr_obj_phonesgroup as $key => $obj_phonesgroup) {
+					$arr_phonesgroup_idgroup[] = $obj_phonesgroup['Phonesgroup']['IDGroup'];
+				}
+
+				$arr_obj_groupcmds = $this->Groupcmd->findObjects('all',array(
+					'conditions'=>array('Groupcmd.Status !=' => 0),
+					'order'=> array('Groupcmd.DGroup desc')));
+
 				$obj_phonesclient = $this->Phonesclient->findBy('IDPhoneclient', $phonesclient_id);
 				$this->request->data = $obj_phonesclient->data;
-				$this->set(compact('phonesclient_id','obj_phonesclient'));
+				$this->set(compact('phonesclient_id','obj_phonesclient','arr_obj_groupcmds','arr_commandgroup_idgroup'));
 			}
+
+			$this->loadModel('Groupcmd');
+			$arr_commandgroup_idgroup = array();
+			$arr_obj_groupcmds = $this->Groupcmd->findObjects('all',array(
+				'conditions'=>array('Groupcmd.Status !=' => 0),
+				'order'=> array('Groupcmd.DGroup desc')));
+			$this->set(compact('arr_obj_groupcmds','arr_commandgroup_idgroup'));
 		}
 	}
 

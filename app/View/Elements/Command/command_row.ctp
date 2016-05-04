@@ -3,8 +3,6 @@
 		<tr>
 			<th></th>
 			<th>Nombre</th>
-			<th>PhoneID</th>
-			<th>Terminador</th>
 			<th>Acci&oacute;n</th>
 		</tr>
 	</thead>
@@ -15,8 +13,6 @@
 				command_id="<?php echo $command->getID(); ?>" command_name="<?php echo $command->getAttr('Command')?>">
 			<td><?php echo $cont++?></td>
 			<td><?php echo $command->getAttr('Command')?></td>
-			<td><?php echo $command->getAttr('PhoneID')?></td>
-			<td><?php echo $command->getAttr('Terminator')?></td>
 			<td><a><i class="fa fa-edit text-navy edit-command-trigger"></i></a>&nbsp;&nbsp;
 				<a href="#myModalDeleteCommand" role="button" data-toggle="modal"
 				data-target="#myModalDeleteCommand"><i

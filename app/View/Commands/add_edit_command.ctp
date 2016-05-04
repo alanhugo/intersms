@@ -22,28 +22,16 @@
 						<?php echo $this->Form->create('Command',array('action'=>'add_edit_command','method'=>'post', 'id'=>'add_edit_command', 'type' => 'file', 'class'=>'form-horizontal'));?>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Nombre:</label>
-								<div class="col-sm-4">
+								<div class="col-sm-9">
 									<input type="text" name="data[Command][Command]" id="Command" class="form-control" value="<?php echo (isset($obj_command))?$obj_command->getAttr('Command'):''?>">
-								</div>
-								<label class="col-sm-1 control-label">Celular:</label>
-								<div class="col-sm-4">
-									<input type="text" name="data[Command][PhoneID]" id="PhoneID" class="form-control" value="<?php echo (isset($obj_command))?$obj_command->getAttr('PhoneID'):''?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">FlagCMD:</label>
-								<div class="col-sm-4">
+								<div class="col-sm-9">
 									<input type="text" name="data[Command][FlagCMD]" id="FlagCMD" class="form-control" value="<?php echo (isset($obj_command))?$obj_command->getAttr('FlagCMD'):''?>">
 								</div>
-								<label class="col-sm-1 control-label">Terminador:</label>
-								<div class="col-sm-4">
-									<select name="data[Command][Terminator]" data-placeholder="Seleccionar un terminador" class="chosen-select" style="width:100%;" tabindex="4">
-										<option <?php echo (isset($obj_command))?(($obj_command->getAttr('Terminator')=='#registrar')?'selected':''):''?> value="#registrar">#Registrar</option>
-										<option <?php echo (isset($obj_command))?(($obj_command->getAttr('Terminator')=='salto_linea')?'selected':''):''?> value="salto_linea">Salto de Linea</option>
-										<option <?php echo (isset($obj_command))?(($obj_command->getAttr('Terminator')=='emergencia')?'selected':''):''?> value="emergencia">Emergencia</option>
-										<option <?php echo (isset($obj_command))?(($obj_command->getAttr('Terminator')=='urgencia')?'selected':''):''?> value="urgencia">Urgencia</option>
-									</select>
-								</div>
+								
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Help Mess:</label>

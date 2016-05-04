@@ -26,11 +26,14 @@
 	<li class="<?php echo ($controller == 'dashboard')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>dashboard"><i class="fa fa-th-large"></i> <span
 			class="nav-label">Dashboards</span>
 	</a></li>
-	<li class="<?php echo ($controller == 'groupcmds')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>groupcmds"><i class="fa fa-files-o"></i> <span
-			class="nav-label">Comandos Grupos</span>
-	</a></li>
 	<li class="<?php echo ($controller == 'commands')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>commands"><i class="fa fa-cogs"></i> <span
 			class="nav-label">Comandos</span>
+	</a></li>
+	<li class="<?php echo ($controller == 'phonesclients')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>phonesclients"><i class="fa fa-cogs"></i> <span
+			class="nav-label">Numero de Clientes</span>
+	</a></li>
+	<li class="<?php echo ($controller == 'groupcmds')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>groupcmds"><i class="fa fa-files-o"></i> <span
+			class="nav-label">Grupos</span>
 	</a></li>
 	<li class="<?php echo ($controller == 'usuarios')?"active":"";?>"><a href="<?php echo ENV_WEBROOT_FULL_URL?>usuarios"><i class="fa fa-user"></i> <span
 			class="nav-label">Usuarios</span>
