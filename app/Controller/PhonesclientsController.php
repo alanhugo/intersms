@@ -49,6 +49,18 @@ class PhonesclientsController extends AppController{
 				//update
 				$this->request->data['Phonesclient']['IDPhoneclient'] = $phonesclient_id;
 				if ($this->Phonesclient->save($this->request->data)) {
+					$this->loadModel('Phonesgroup');
+					$this->Phonesgroup->deleteAll($phonesclient_id);
+
+					$arr_phonesgroup = array();
+					if(isset($this->request->data['Groupcmd']['IDGroup'])){
+						foreach ($this->request->data['Groupcmd']['IDGroup'] as $key => $value) {
+							$arr = array("IDPhoneclient" => $phonesclient_id, "IDGroup" => $value, "IDUser" => $this->obj_logged_user->getID());
+							$arr_phonesgroup[$key] = $arr;
+						}
+					}
+					//debug($arr_commandsgroup);exit();
+					$this->Commandgroup->saveAll($arr_phonesgroup);
 					echo json_encode(array('success'=>true,'msg'=>__('Guardado con &eacute;xito.'),'phonesclient_id'=>$phonesclient_id));
 					exit();
 				}else{
